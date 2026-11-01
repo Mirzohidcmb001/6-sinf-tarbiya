@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12-Oltin qoida</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#33200a,#93651b,#171006);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.card {
+    width: 100%;
+    max-width: 800px;
+    padding: 45px 30px;
+    text-align: center;
+    border: 2px solid #ffda82;
+    border-radius: 30px;
+    background: #ffffff12;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 50px #ffc04a33;
+    animation: appear 1s ease;
+}
+
+.number {
+    color: #ffe0a0;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 90px;
+    margin: 25px 0;
+    animation: float 3s infinite ease-in-out;
+    filter: drop-shadow(0 0 20px #ffca65);
+}
+
+h1 {
+    color: #ffe0a0;
+    font-size: clamp(28px,6vw,45px);
+    margin-bottom: 25px;
+}
+
+p {
+    color: #f8ead0;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.quote {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 20px;
+    background: #ffc04a18;
+    color: #ffe6b5;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 30px;
+    padding: 16px 35px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg,#ffe9b5,#e9ad43);
+    color: #38220a;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px #ffca65;
+}
+
+#message {
+    color: #ffe6b5;
+    margin-top: 25px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 25px;
+    color: #ffe6b5;
+    text-decoration: none;
+}
+
+@keyframes float {
+    50% {transform: translateY(-15px);}
+}
+
+@keyframes appear {
+    from {opacity:0;transform:translateY(40px);}
+    to {opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<canvas class="stars" id="stars"></canvas>
+
+<div class="card">
+
+<div class="number">🤝 12-OLTIN QOIDA 🤝</div>
+
+<div class="icon">🤝</div>
+
+<h1>VA'DAMGA SODIQ QOLAMAN</h1>
+
+<p>
+Men bergan va'damda turaman
+va so'zimga sodiq qolaman.
+
+Boshqalarga bergan va'dalarimni
+doimo bajarishga harakat qilaman.
+
+Ishonchni qadrlayman,
+hech kimning ishonchini oqlamay qo'ymayman.
+
+Boshlagan ishimni oxirigacha yetkazaman
+va har doim so'zimning ustidan chiqaman.
+</p>
+
+<div class="quote">
+"Va'daga vafo — insoniylik belgisi!"
+</div>
+
+<button onclick="promise()">
+💛 MEN BU QOIDAGA AMAL QILAMAN
+</button>
+
+<div id="message"></div>
+
+<a class="back" href="index.html">
+⬅ Bosh sahifaga qaytish
+</a>
+
+</div>
+
+<script>
+// Yulduzlar animatsiyasi
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+let stars = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    stars = [];
+
+    for(let i = 0; i < 100; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 2,
+            speed: Math.random() * 0.5 + 0.1
+        });
+    }
+}
+
+function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    stars.forEach(s => {
+        ctx.beginPath();
+        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fillStyle = "#ffe0a0";
+        ctx.fill();
+
+        s.y -= s.speed;
+
+        if(s.y < 0) {
+            s.y = canvas.height;
+            s.x = Math.random() * canvas.width;
+        }
+    });
+
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener("resize",resize);
+resize();
+animate();
+
+// Va'daga sodiqlik va'dasi
+
+function promise() {
+    document.getElementById("message").innerHTML =
+    "💛 Men bergan va'damda doimo turaman!";
+
+    for(let i = 0; i < 35; i++) {
+        let el = document.createElement("div");
+
+        el.innerHTML = ["🤝","⭐","✨","💛","🏆"][
+            Math.floor(Math.random()*5)
+        ];
+
+        el.style.position = "fixed";
+        el.style.left = Math.random()*100 + "vw";
+        el.style.top = "-30px";
+        el.style.fontSize = "25px";
+        el.style.zIndex = "9999";
+        el.style.pointerEvents = "none";
+
+        document.body.appendChild(el);
+
+        let x = Math.random()*200-100;
+
+        el.animate([
+            {transform:"translateY(0)",opacity:1},
+            {transform:`translate(${x}px,100vh)`,opacity:0}
+        ],{
+            duration:3000,
+            easing:"ease-in"
+        }).onfinish = () => el.remove();
+    }
+}
+</script>
+
+</body>
+</html>
