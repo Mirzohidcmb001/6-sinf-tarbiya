@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mening oltin qoidalarim</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #090d20;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Fon */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+    radial-gradient(circle at 20% 20%, #343078 0%, transparent 35%),
+    radial-gradient(circle at 80% 70%, #603b78 0%, transparent 35%),
+    linear-gradient(135deg,#080d20,#171b40,#090d20);
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* HERO */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 1000px;
+}
+
+.crown {
+    font-size: 90px;
+    animation: float 3s infinite ease-in-out;
+    filter: drop-shadow(0 0 25px gold);
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 8vw, 90px);
+    font-weight: 900;
+    background: linear-gradient(
+        90deg,#fff1a6,#ffd447,#fff5c4,#d89b24
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 5px 20px #ffc40055);
+    margin: 25px 0;
+    animation: appear 1.5s ease;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #d5d9f5;
+    line-height: 1.9;
+}
+
+.line {
+    width: 180px;
+    height: 4px;
+    margin: 30px auto;
+    background: linear-gradient(90deg,transparent,gold,transparent);
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 17px 38px;
+    background: linear-gradient(135deg,#ffe68b,#d99b22);
+    border-radius: 40px;
+    text-decoration: none;
+    color: #19152b;
+    font-weight: 800;
+    font-size: 17px;
+    box-shadow: 0 0 35px #ffce4d66;
+    transition: .4s;
+}
+
+.hero-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 60px gold;
+}
+
+/* Umumiy */
+.container {
+    max-width: 1250px;
+    margin: auto;
+    padding: 60px 25px;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Playfair Display',serif;
+    color: #ffdb73;
+    font-size: clamp(30px,5vw,50px);
+    margin-bottom: 20px;
+}
+
+.section-text {
+    text-align: center;
+    color: #bfc6e8;
+    margin-bottom: 55px;
+    font-size: 16px;
+}
+
+/* Kartochkalar */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 28px;
+}
+
+.card {
+    position: relative;
+    padding: 35px 27px;
+    min-height: 270px;
+    border-radius: 25px;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.12),
+        rgba(255,255,255,.035)
+    );
+    border: 1px solid #eac45c55;
+    backdrop-filter: blur(15px);
+    overflow: hidden;
+    transition: .5s;
+    animation: appear .8s ease backwards;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #ffcf4566;
+    filter: blur(80px);
+    top: -70px;
+    right: -60px;
+}
+
+.card:hover {
+    transform: translateY(-13px) scale(1.025);
+    border-color: #ffda70;
+    box-shadow: 0 15px 45px #ffcf4530;
+}
+
+.number {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 35px;
+    font-weight: 800;
+    color: #ffffff20;
+}
+
+.icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+    display: block;
+    filter: drop-shadow(0 0 12px #ffd15b55);
+}
+
+.card h3 {
+    font-size: 21px;
+    color: #ffdc7a;
+    margin-bottom: 13px;
+}
+
+.card p {
+    color: #dce0f5;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* Shior */
+.motto {
+    margin: 100px auto;
+    padding: 70px 30px;
+    text-align: center;
+    border: 2px solid #e9bd4b88;
+    border-radius: 35px;
+    background: linear-gradient(135deg,#34305c,#171d3b);
+    box-shadow: 0 0 60px #dba63220;
+}
+
+.motto h2 {
+    font-family: 'Playfair Display',serif;
+    font-size: 38px;
+    color: #ffdc76;
+    margin-bottom: 25px;
+}
+
+.motto p {
+    font-size: clamp(18px,3vw,27px);
+    line-height: 2;
+    font-weight: 600;
+}
+
+/* Va'da */
+.promise {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.promise h2 {
+    font-size: 40px;
+    color: #ffda75;
+    margin-bottom: 20px;
+}
+
+.promise p {
+    color: #c9d0ec;
+    line-height: 2;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    margin-top: 35px;
+    padding: 19px 42px;
+    border-radius: 50px;
+    background: linear-gradient(135deg,#ffe998,#e4a928);
+    font-size: 18px;
+    font-weight: 800;
+    color: #17152b;
+    box-shadow: 0 0 30px #ffcd4d55;
+    transition: .4s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 60px gold;
+}
+
+#result {
+    color: #ffe28a;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 30px;
+    min-height: 60px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid #ffffff20;
+    color: #b9bfdc;
+    line-height: 2;
+}
+
+footer span {
+    color: gold;
+}
+
+/* Animatsiya */
+@keyframes float {
+    0%,100% {transform: translateY(0)}
+    50% {transform: translateY(-20px)}
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width:600px) {
+    .hero {min-height: 80vh;}
+    .crown {font-size: 65px;}
+    .motto {padding: 45px 20px;}
+    .motto h2 {font-size: 29px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<canvas class="stars" id="stars"></canvas>
+
+<section class="hero">
+<div class="hero-content">
+
+<div class="crown">👑</div>
+
+<h1>MENING OLTIN QOIDALARIM</h1>
+
+<div class="line"></div>
+
+<p>
+Odobim — ziynatim, bilimim — boyligim,<br>
+Yaxshi xulqim — mening eng katta yutug‘im!
+</p>
+
+<a href="#qoidalar" class="hero-btn">
+✨ Qoidalarimni ko‘rish
+</a>
+
+</div>
+</section>
+
+
+<section class="container" id="qoidalar">
+
+<h2 class="section-title">🌟 MENING 12 TA OLTIN QOIDAM</h2>
+
+<p class="section-text">
+Har bir qoida — mening kelajagim sari tashlangan muhim qadam!
+</p>
+
+<div class="cards">
+
+<a href="1.html" class="card">
+<span class="number">01</span>
+<span class="icon">🙏</span>
+<h3>Kattalarni hurmat qilaman</h3>
+<p>Ota-onamni, ustozlarimni va barcha kattalarni hurmat qilaman.</p>
+</a>
+
+<a href="2.html" class="card">
+<span class="number">02</span>
+<span class="icon">❤️</span>
+<h3>Mehribon bo‘laman</h3>
+<p>Barcha insonlarga mehr va yaxshilik ulashaman.</p>
+</a>
+
+<a href="3.html" class="card">
+<span class="number">03</span>
+<span class="icon">📚</span>
+<h3>Bilim olishga intilaman</h3>
+<p>Har kuni yangi bilim va ko‘nikmalarni egallayman.</p>
+</a>
+
+<a href="4.html" class="card">
+<span class="number">04</span>
+<span class="icon">🤝</span>
+<h3>Do‘stlarimni qadrlayman</h3>
+<p>Do‘stlarimga sodiq va yordamga tayyor bo‘laman.</p>
+</a>
+
+<a href="5.html" class="card">
+<span class="number">05</span>
+<span class="icon">⏰</span>
+<h3>Vaqtni qadrlayman</h3>
+<p>Vaqtimdan unumli foydalanaman va kechikmayman.</p>
+</a>
+
+<a href="6.html" class="card">
+<span class="number">06</span>
+<span class="icon">🌱</span>
+<h3>Tabiatni asrayman</h3>
+<p>Atrof-muhitni toza saqlayman va tabiatni sevaman.</p>
+</a>
+
+<a href="7.html" class="card">
+<span class="number">07</span>
+<span class="icon">🧹</span>
+<h3>Ozodalikka rioya qilaman</h3>
+<p>O‘zimni, kiyimlarimni va atrofimni ozoda tutaman.</p>
+</a>
+
+<a href="8.html" class="card">
+<span class="number">08</span>
+<span class="icon">💪</span>
+<h3>Mehnatsevar bo‘laman</h3>
+<p>Har qanday ishni mas'uliyat bilan bajaraman.</p>
+</a>
+
+<a href="9.html" class="card">
+<span class="number">09</span>
+<span class="icon">🗣️</span>
+<h3>Shirinso‘z bo‘laman</h3>
+<p>Hamma bilan muloyim va odobli gaplashaman.</p>
+</a>
+
+<a href="10.html" class="card">
+<span class="number">10</span>
+<span class="icon">⚖️</span>
+<h3>Rostgo‘y bo‘laman</h3>
+<p>Doimo haqiqatni gapiraman va yolg‘on so‘zlamayman.</p>
+</a>
+
+<a href="11.html" class="card">
+<span class="number">11</span>
+<span class="icon">🇺🇿</span>
+<h3>Vatanimni sevaman</h3>
+<p>Vatanimni qadrlayman va uning ravnaqi uchun intilaman.</p>
+</a>
+
+<a href="12.html" class="card">
+<span class="number">12</span>
+<span class="icon">🌟</span>
+<h3>Va'damga sodiq qolaman</h3>
+<p>Berilgan va'dalarni bajarishga harakat qilaman.</p>
+</a>
+
+</div>
+</section>
+
+
+</div>
+
+<div class="motto">
+<h2>🏆 MENING HAYOTIY SHIORIM</h2>
+<p>
+«Bugun kechagidan yaxshiroq bo‘l!<br>
+Har kuni yangi bilim ol!<br>
+Yaxshilik qil, hurmat qozon,<br>
+Kelajagingni o‘z qo‘ling bilan yarat!»
+</p>
+</div>
+
+</section>
+
+<section class="promise">
+
+<h2>💛 MENING MUQADDAS VA'DAM</h2>
+
+<p>
+Men ushbu oltin qoidalarga amal qilishga,<br>
+odobli, bilimli, mehribon va vatanparvar inson<br>
+bo‘lib voyaga yetishga va'da beraman!
+</p>
+
+<button onclick="promise()">✨ MEN VA'DA BERAMAN</button>
+
+<div id="result"></div>
+
+</section>
+
+<footer>
+🌟 <span>MENING OLTIN QOIDALARIM</span> 🌟<br>
+6-sinf | Tarbiya fanidan ijodiy loyiha<br>
+<small>Odob — inson ziynati!</small>
+</footer>
+
+<script>
+
+// Yulduzlar animatsiyasi
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+let stars = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    stars = [];
+
+    for(let i=0;i<100;i++){
+        stars.push({
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height,
+            r:Math.random()*2,
+            speed:Math.random()*0.5+0.1
+        });
+    }
+}
+
+function animateStars() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    stars.forEach(s=>{
+        ctx.beginPath();
+        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fillStyle="#ffdf83";
+        ctx.fill();
+
+        s.y-=s.speed;
+
+        if(s.y<0){
+            s.y=canvas.height;
+            s.x=Math.random()*canvas.width;
+        }
+    });
+
+    requestAnimationFrame(animateStars);
+}
+
+window.addEventListener("resize",resize);
+resize();
+animateStars();
+
+// Va'da tugmasi
+function promise() {
+    document.getElementById("result").innerHTML =
+    "🎉 MEN VA'DA BERAMAN! 🎉<br>Men eng yaxshi inson bo‘lishga intilaman! ❤️";
+
+    for(let i=0;i<35;i++){
+        let el=document.createElement("div");
+
+        el.innerHTML=["✨","⭐","💛","🌟","🎉"][
+            Math.floor(Math.random()*5)
+        ];
+
+        el.style.position="fixed";
+        el.style.left=Math.random()*100+"vw";
+        el.style.top="-30px";
+        el.style.fontSize="25px";
+        el.style.zIndex="9999";
+        el.style.pointerEvents="none";
+
+        document.body.appendChild(el);
+
+        let x=Math.random()*200-100;
+
+        el.animate([
+            {transform:"translateY(0) rotate(0deg)",opacity:1},
+            {transform:`translate(${x}px,100vh) rotate(500deg)`,opacity:0}
+        ],{
+            duration:2500+Math.random()*2000,
+            easing:"ease-in"
+        }).onfinish=()=>el.remove();
+    }
+}
+
+
+</script>
+
+</body>
+</html>
